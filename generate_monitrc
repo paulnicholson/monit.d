@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GENERATED_PASSWORD=$(date | md5)
+GENERATED_PASSWORD=$(date | md5sum | cut -f 1 -d ' ')
 SERVICENET_IP=$(ifconfig eth1 | grep "inet addr" | awk -F: '{print $2}' | awk '{print $1}')
 
 [ -e /etc/monit.d/monitrc.env ] && source /etc/monit.d/monitrc.env
