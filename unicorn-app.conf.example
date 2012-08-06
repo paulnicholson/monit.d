@@ -1,0 +1,11 @@
+check process unicorn_<app> with pidfile /var/www/apps/<app>/shared/pids/unicorn.pid
+  group app
+  start program = "/etc/monit.d/unicorn-<app>.start"
+    as uid <app> and gid <app>
+  stop program = "/etc/monit.d/unicorn-<app>.stop"
+    as uid <app> and gid <app>
+  if failed unixsocket /var/www/apps/<app>/shared/sockets/unicorn.sock
+      protocol HTTP request "/?status" then restart
+  #if mem is greater than 175.0 MB for 1 cycles then restart
+  #if cpu is greater than 22% for 2 cycles then alert
+  #if cpu is greater than 25% for 1 cycles then restart

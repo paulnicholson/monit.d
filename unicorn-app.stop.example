@@ -1,0 +1,4 @@
+#!/bin/bash
+
+PATH=~/.rbenv/shims:~/.rbenv/bin:$PATH
+kill `cat /var/www/apps/<app>/shared/pids/unicorn.pid`

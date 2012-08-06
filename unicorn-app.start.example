@@ -1,0 +1,4 @@
+#!/bin/bash
+
+PATH=~/.rbenv/shims:~/.rbenv/bin:$PATH
+exec /var/www/apps/<app>/current/bin/unicorn -c /var/www/apps/<app>/current/config/unicorn.rb -E production -D /var/www/apps/<app>/current/config.ru

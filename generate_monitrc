@@ -150,5 +150,5 @@ check system $HOSTNAME
 ## It is possible to include additional configuration parts from other files or
 ## directories.
 
-include /etc/monit.enabled/*.conf
+include $MONIT_CONFIG_DIR/*.conf
 END
