@@ -1,0 +1,11 @@
+#!/bin/bash
+
+source monitrc.env
+
+read -p "Enter app name: " APP
+
+cat delayed_job-app.conf.example | sed -e "s/<app>/$APP/g" -e "s|<monit_config_dir>|$MONIT_CONFIG_DIR|g" > $MONIT_CONFIG_DIR/delayed_job-$APP.conf
+cat delayed_job-app.start.example | sed -e "s/<app>/$APP/g" -e "s|<monit_config_dir>|$MONIT_CONFIG_DIR|g" > $MONIT_CONFIG_DIR/delayed_job-$APP.start
+cat delayed_job-app.stop.example | sed -e "s/<app>/$APP/g" -e "s|<monit_config_dir>|$MONIT_CONFIG_DIR|g" > $MONIT_CONFIG_DIR/delayed_job-$APP.stop
+
+chmod +x $MONIT_CONFIG_DIR/delayed_job-$APP.st*
