@@ -1,4 +1,5 @@
 #!/bin/bash
 
 PATH=~/.rbenv/shims:~/.rbenv/bin:$PATH
-exec env RAILS_ENV=production /var/www/apps/<app>/current/script/delayed_job start
+cd /var/www/apps/<app>/current/
+exec env RAILS_ENV=production script/delayed_job start
