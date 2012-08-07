@@ -1,8 +1,8 @@
 check process unicorn_<app> with pidfile /var/www/apps/<app>/shared/pids/unicorn.pid
   group app
-  start program = "/etc/monit.d/unicorn-<app>.start"
+  start program = "<monit_config_dir>/unicorn-<app>.start"
     as uid <app> and gid <app>
-  stop program = "/etc/monit.d/unicorn-<app>.stop"
+  stop program = "<monit_config_dir>/unicorn-<app>.stop"
     as uid <app> and gid <app>
   if failed unixsocket /var/www/apps/<app>/shared/sockets/unicorn.sock
       protocol HTTP request "/?status" then restart

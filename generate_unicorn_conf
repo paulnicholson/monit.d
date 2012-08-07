@@ -4,8 +4,8 @@ source monitrc.env
 
 read -p "Enter app name: " APP
 
-cat unicorn-app.conf.example | sed -e "s/<app>/$APP/g" > $MONIT_CONFIG_DIR/unicorn-$APP.conf
-cat unicorn-app.start.example | sed -e "s/<app>/$APP/g" > $MONIT_CONFIG_DIR/unicorn-$APP.start
-cat unicorn-app.stop.example | sed -e "s/<app>/$APP/g" > $MONIT_CONFIG_DIR/unicorn-$APP.stop
+cat unicorn-app.conf.example | sed -e "s/<app>/$APP/g" -e "s/<monit_config_dir>/$MONIT_CONFIG_DIR/g" > $MONIT_CONFIG_DIR/unicorn-$APP.conf
+cat unicorn-app.start.example | sed -e "s/<app>/$APP/g" -e "s/<monit_config_dir>/$MONIT_CONFIG_DIR/g" > $MONIT_CONFIG_DIR/unicorn-$APP.start
+cat unicorn-app.stop.example | sed -e "s/<app>/$APP/g" -e "s/<monit_config_dir>/$MONIT_CONFIG_DIR/g" > $MONIT_CONFIG_DIR/unicorn-$APP.stop
 
 chmod +x $MONIT_CONFIG_DIR/unicorn-$APP.st*
