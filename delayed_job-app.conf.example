@@ -1,4 +1,4 @@
-check process delayed_job with pidfile /var/www/apps/<app>/shared/pids/delayed_job.pid
+check process <app>_delayed_job with pidfile /var/www/apps/<app>/shared/pids/delayed_job.pid
   group worker
   start program = "<monit_config_dir>/delayed_job-<app>.start"
     as uid <app> and gid <app> with timeout 60 seconds
