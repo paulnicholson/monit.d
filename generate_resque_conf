@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source monitrc.env
+
+read -p "Enter app name: " APP
+read -e -p "Enter queue name: " -i "any" QUEUE_NAME
+QUEUE=$QUEUE_NAME
+if [ "$QUEUE" = "any" ]; then
+  QUEUE="*"
+fi
+
+cat resque-app.conf.example | sed -e "s/<app>/$APP/g" -e "s/<queue>/$QUEUE/g" -e "s/<queue_name>/$QUEUE_NAME/g" > $MONIT_CONFIG_DIR/resque-$APP-$QUEUE_NAME.conf
+
