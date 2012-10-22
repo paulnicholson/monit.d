@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source monitrc.env
+
+read -p "Enter ip address redis is listening on: " REDIS_IP
+
+cat redis.conf.example | sed -e "s/<redis_ip>/$REDIS_IP/g" > $MONIT_CONFIG_DIR/redis.conf
