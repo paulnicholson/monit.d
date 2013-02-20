@@ -2,7 +2,7 @@ check process <app>_delayed_job with pidfile /var/www/apps/<app>/shared/pids/del
   group worker
   start program = "<monit_config_dir>/delayed_job-<app>.start"
     as uid <app> and gid <app> with timeout 60 seconds
-  stop program = "<monit_config_dir>/delayed_job-demo.stop"
+  stop program = "<monit_config_dir>/delayed_job-<app>.stop"
     as uid <app> and gid <app> with timeout 60 seconds
   #if mem is greater than 175.0 MB for 1 cycles then restart
   #if cpu is greater than 22% for 2 cycles then alert
