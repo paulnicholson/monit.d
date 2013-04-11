@@ -1,5 +1,5 @@
 #!/bin/bash
 
-PATH=~/.rbenv/shims:~/.rbenv/bin:$PATH
+export PATH=~/.rbenv/shims:~/.rbenv/bin:$PATH
 cd /var/www/apps/<app>/current/
 exec env RAILS_ENV=production script/delayed_job stop

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PATH=~/.rbenv/shims:~/.rbenv/bin:$PATH
+export PATH=~/.rbenv/shims:~/.rbenv/bin:$PATH
 
 if [[ $CHILD_ID ]]; then
   echo "Killing unicorn child process"
